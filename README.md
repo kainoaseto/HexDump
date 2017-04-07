@@ -2,7 +2,7 @@
 Hex Dump program that will print out a hex chart and ascii for files of size up to `0xFFFFFFFF`.
 Built to do a simple simulation of the Linux program, `hexdump`, where this program would always run with the flag `-C`.
 
-Example artial output of the binary for this program on OSX:
+Example partial output of the binary for this program on OSX:
 ```
     Addr:  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  -------ASCII------
 00000000: CF FA ED FE 07 00 00 01 03 00 00 80 02 00 00 00  |................|
