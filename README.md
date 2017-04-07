@@ -1,3 +1,21 @@
 ## HexDump
 Hex Dump program that will print out a hex chart and ascii for files of size up to `0xFFFFFFFF`.
-Built to do a simple simulation of the Linux program, `hexdump` where this program would always run with the flag `-C`
+Built to do a simple simulation of the Linux program, `hexdump`, where this program would always run with the flag `-C`.
+
+Example artial output of the binary for this program on OSX:
+```
+    Addr:  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  -------ASCII------
+00000000: CF FA ED FE 07 00 00 01 03 00 00 80 02 00 00 00  |................|
+00000010: 0F 00 00 00 00 05 00 00 85 00 20 00 00 00 00 00  |.......... .....|
+00000020: 19 00 00 00 48 00 00 00 5F 5F 50 41 47 45 5A 45  |....H...__PAGEZE|
+00000030: 52 4F 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |RO..............|
+00000040: 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00  |................|
+00000050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  |................|
+00000060: 00 00 00 00 00 00 00 00 19 00 00 00 D8 01 00 00  |................|
+00000070: 5F 5F 54 45 58 54 00 00 00 00 00 00 00 00 00 00  |__TEXT..........|
+00000080: 00 00 00 00 01 00 00 00 00 20 00 00 00 00 00 00  |......... ......|
+00000090: 00 00 00 00 00 00 00 00 00 20 00 00 00 00 00 00  |......... ......|
+000000A0: 07 00 00 00 05 00 00 00 05 00 00 00 00 00 00 00  |................|
+000000B0: 5F 5F 74 65 78 74 00 00 00 00 00 00 00 00 00 00  |__text..........|
+
+```
