@@ -31,13 +31,13 @@ void Hexdump_dump( FILE* file_to_dump )
 
     total_count = 0, char_count = 0;
 
-    printf("    Addr:  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   ------ASCII-----\n");
+    printf("    Addr:  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  -------ASCII------\n");
     while((current_char = fgetc(file_to_dump)) != EOF)
     {
         // if we have finished printing out the hex print out the ascii
         if (char_count == 16)
         {
-            printf("  %s\n", ascii_line);
+            printf(" |%s|\n", ascii_line);
             char_count = 0;
             // Clear line buffer after we have printed it out
             memset(ascii_line, 0, 16);
@@ -57,9 +57,9 @@ void Hexdump_dump( FILE* file_to_dump )
         delete(hchar, 2);
 
         // Handle char overrides for certain characters we do not want to print out in the ascii table
-        if (current_char == '\r' || current_char == '\n' || current_char >= 127 || current_char <= 32)
+        if (current_char == '\r' || current_char == '\n' || current_char > 127 || current_char < 32)
         {
-            ascii_line[char_count] = ' ';
+            ascii_line[char_count] = '.';
         }
         else
         {
@@ -75,8 +75,8 @@ void Hexdump_dump( FILE* file_to_dump )
 
     // Each hex char is represented by 3 characters totalling 48 before the ascii gets prinited
     // Find the different and print out spaces for the final ascii line
-    printf("  % *s", 48 - 3*char_count, " ");
-    printf("%s\n", ascii_line);
+    printf("  % *s", 48 - 3*char_count, "|");
+    printf("%s|\n", ascii_line);
     printf("Final Character count: %i (0x%s)", total_count, itoh(total_count, 0));
 
 }
