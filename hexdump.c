@@ -68,11 +68,6 @@ void Hexdump_dump( FILE* file_to_dump )
         char_count++, total_count++;
     }
 
-    // The EOF must be printed out manually since it is represented as -1 which in hex is FF
-    // however, EOF is represented as 1A
-    printf("1A ");
-    char_count++, total_count++;
-
     // Each hex char is represented by 3 characters totalling 48 before the ascii gets prinited
     // Find the different and print out spaces for the final ascii line
     printf("  % *s", 48 - 3*char_count, "|");
