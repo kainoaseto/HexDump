@@ -29,6 +29,7 @@ void Hexdump_dump( FILE* file_to_dump )
     // The total character count, current line character count, and the current character read in as an integer
     int total_count, char_count, current_char;
 
+    ascii_line[16] = '\0';
     total_count = 0, char_count = 0;
 
     printf("    Addr:  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  -------ASCII------\n");
@@ -41,6 +42,7 @@ void Hexdump_dump( FILE* file_to_dump )
             char_count = 0;
             // Clear line buffer after we have printed it out
             memset(ascii_line, 0, 16);
+            ascii_line[16] = '\0';
         }
 
         // If we have finished printing out the line then print out the prefix to the next line
@@ -72,8 +74,10 @@ void Hexdump_dump( FILE* file_to_dump )
     // Find the different and print out spaces for the final ascii line
     printf("  % *s", 48 - 3*char_count, "|");
     printf("%s|\n", ascii_line);
-    printf("Final Character count: %i (0x%s)", total_count, itoh(total_count, 0));
 
+    hchar = itoh(total_count, 0);
+    printf("Final Character count: %i (0x%s)\n", total_count, hchar);
+    free(hchar);
 }
 
 char* itoh( unsigned int char_int, int max_len)
@@ -154,6 +158,7 @@ char* itoh( unsigned int char_int, int max_len)
     }
     else {
         memcpy(final_hex, temp_hex, max_len);
+        final_hex[count] = '\0';
     }
 
     delete(temp_hex, max_len);
